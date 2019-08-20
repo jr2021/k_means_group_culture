@@ -1,0 +1,6 @@
+flask
+glob3
+sklearn
+pip install nltk
+pip install plotly
+pip install azure-cognitiveservices-speech

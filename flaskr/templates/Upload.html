@@ -1,0 +1,118 @@
+
+<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin = "anonymous">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1.0, user-scalable = no"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta charset="utf-8">
+    <title>KAREN | Data Upload</title>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+      </header>
+      <main role="main" class="inner cover">
+        <div class = "jumbotron" style = "background-color: white;">
+          <div class = "container">
+            <h1 class = "display-4">Upload Employee Check-Ins</h1>
+            <hr>
+            <p>
+              Choose your employee check-in, categorize the employee, and click <b>"Upload"</b>. Once your employee check-ins have been uploaded, click <b>"Learn"</b> 
+            </p>
+            <form id="FileUpload" method = post action = "/Upload" enctype = "multipart/form-data" class = "input-group mb-4">
+              <div class="container" style>
+                <div id = "file-select" class = "col-md-12 custom-file form-group">
+                  <input type = "file" name = "file" class = "custom-file-input" id = "inputGroupFile02">
+                  <label class = "custom-file-label" for = "inputGroupFile02" aria-describedby = "inputGroupFileAddon02">Choose employee check-in</label>
+                </div>
+              </div>
+              <div class="col-md-12 form-group">
+                <select class="form-control" name = "Gender">
+                  <option selected disabled>Select employee gender...</option>
+                  <option value = "Male">Male</option>
+                  <option value = "Female">Female</option>
+                  <option value = "Other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-12 form-group">
+                <select class="form-control" name = "Generation">
+                  <option selected disabled>Select employee generation...</option>
+                  <option value = "Boomer">Baby Boomer</option>
+                  <option value = "X">Generation X</option>
+                  <option value = "Y">Generation Y</option>
+                  <option value = "Z">Generation Z</option>
+                </select>
+              </div>
+              <div class="col-md-12 form-group">
+                <select class="form-control" name = "Location">
+                  <option selected disabled>Select employee location...</option>
+                  <option value = "Local">Wellesley</option>
+                  <option value = "Global">Global</option>
+                </select>
+              </div>
+              <div class = "col-md-12">
+                <input type="submit" class = "btn btn-primary" id = "upload" value = "Upload" onclick="submitForms"></input>
+              </div>
+              <div class = "col-md-12">
+                <button id = "transcribing" style = "display:none;" class = "btn btn-primary" type = "button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Uploading...
+                </button>
+              </div>   
+            </form>
+            <form action = "{{ url_for('DataVisualization') }}">
+              <button id = "go" class = "btn btn-primary" style = "position:fixed; bottom:10px; right:10px;" type = "submit">Learn</button>
+            </form>
+            <button id = "learning" style = "position:fixed; bottom:10px; right:10px; display:none;" class = "btn btn-primary" type = "button" disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Learning...
+            </button>
+          </div>
+        </div>
+
+      </main>
+
+      <footer class="mastfoot mt-auto">
+      </footer>
+    </div>
+    <script>
+      document.getElementById("upload").onclick = function () {
+        document.getElementById("upload").style.display = "none"
+        document.getElementById("transcribing").style.display = "inline"
+      }
+
+      document.getElementById("go").onclick = function () {
+        document.getElementById("go").style.display = "none"
+        document.getElementById("learning").style.display = "block"
+      }
+
+      document.getElementById("file-select").style.marginBottom = "15px"
+
+      submitForms = function(){
+        document.getElementById("Category").submit();
+      }
+
+      $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+      })
+    </script>
+  </body>
+</html>
