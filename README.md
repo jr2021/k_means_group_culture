@@ -1,6 +1,6 @@
-# k_means_organizational_culture
+# k_means_group_culture
 
-k_means_organizational_culture leverages the K-Means Natural Language Processing algorithm to convert conversations like employee check-ins to insights into group culture.
+k_means_group_culture leverages the K-Means Natural Language Processing algorithm to convert conversations like employee check-ins to insights into group culture via an interactive dashboard
 
 ## Prerequisites
 
