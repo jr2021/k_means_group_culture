@@ -50,7 +50,7 @@ At this point you should have all the dependancies required to run the applicati
 Navigate to Command Prompt (Windows) or Terminal (MacOS) and run
 
 ```
-git clone https://github.com/jr2021/intern-project-2019.git
+git clone https://github.com/jr2021/k_means_group_culture.git
 ```
 
 ```
