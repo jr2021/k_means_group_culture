@@ -54,7 +54,7 @@ git clone https://github.com/jr2021/k_means_group_culture.git
 ```
 
 ```
-cd intern-project-2019
+cd k_means_group_culture
 ```
 
 * On Command Prompt run
