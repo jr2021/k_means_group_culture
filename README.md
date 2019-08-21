@@ -1,6 +1,6 @@
 # k_means_organizational_culture
 
-KAREN leverages the K-Means Natural Language Processing algorithm to convert conversations like employee check-ins to insights into group culture.
+k_means_organizational_culture leverages the K-Means Natural Language Processing algorithm to convert conversations like employee check-ins to insights into group culture.
 
 ## Prerequisites
 
